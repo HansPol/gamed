@@ -16,6 +16,7 @@ public class Spawning : MonoBehaviour
 
     public static Spawning spwn;
 
+
     public Transform collectablePrefab;
     public Transform collectableSpawnPoint;
     public float collectableSpawnDelay;
