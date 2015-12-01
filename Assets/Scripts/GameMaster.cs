@@ -15,8 +15,7 @@ public class GameMaster : MonoBehaviour {
     public Transform spawnPoint;
     public float SpawnDelay = 2;
 
-
-        public IEnumerator RespawnPlayer ()
+          public IEnumerator RespawnPlayer ()
     {
         Debug.Log ("TODO: Spawn Sound");
         yield return new WaitForSeconds(SpawnDelay);
@@ -25,9 +24,14 @@ public class GameMaster : MonoBehaviour {
         Debug.Log("TODO: Add Spawn Particles");
     }
 
-
     public static void KillPlayer(Player player) {
-          Destroy(player.gameObject);
-          gm.StartCoroutine(gm.RespawnPlayer());
+        Destroy(player.gameObject);
+
+        GameObject[] coinsToDestoy = GameObject.FindGameObjectsWithTag("Coin");         //find all gameobject tagged coin and destroy and destroy them on player death
+        foreach (GameObject Coin in coinsToDestoy ) {
+            Destroy(Coin);
+        }
+
+        gm.StartCoroutine(gm.RespawnPlayer());
     }
 }
