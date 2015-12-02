@@ -27,15 +27,17 @@ public class Spawning : MonoBehaviour
         yield return new WaitForSeconds(collectableSpawnDelay); //spawn delay
 
         for (int i = 0; i < collectableSpawnPoint.Length; i++) //loop as many times as array length
-        {
-            int index = Random.Range(0, collectableSpawnPoint.Length); //Get random point on spawnpoint array
-            var spawnpoint = collectableSpawnPoint[index];
-            GameObject.Instantiate(collectablePrefab, spawnpoint.position, spawnpoint.rotation); //instantiate collectable on spawnpoint
+        {            
+            if(i>0)//ignore pos 0
+            {
+                //Debug.Log("TEST "+ i );
+                var spawnpoint = collectableSpawnPoint[i];
+                GameObject.Instantiate(collectablePrefab, spawnpoint.position, spawnpoint.rotation); //instantiate collectable on spawnpoint
+            }
+            
         }
-        //TODO: Zorg er voor dat tapes niet meerdere keren op hetzelfde punt gespawnd worden.
 
     }
-
         public static void Spawn(Spawning spawn) //public accessible void that starts spawning
     {
         spwn.StartCoroutine(spwn.StartSpawn());
