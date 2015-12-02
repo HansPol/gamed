@@ -30,7 +30,7 @@ public class Spawning : MonoBehaviour
         {
             int index = Random.Range(0, collectableSpawnPoint.Length); //Get random point on spawnpoint array
             var spawnpoint = collectableSpawnPoint[index];
-            GameObject.Instantiate(collectablePrefab, spawnpoint.position, spawnpoint.rotation); //instantiate on spawnpoint
+            GameObject.Instantiate(collectablePrefab, spawnpoint.position, spawnpoint.rotation); //instantiate collectable on spawnpoint
         }
         //TODO: Zorg er voor dat tapes niet meerdere keren op hetzelfde punt gespawnd worden.
 
