@@ -6,6 +6,7 @@ namespace UnityStandardAssets._2D
     public class Camera2DFollow : MonoBehaviour
     {
         public Transform target;
+
         public float damping = 1;
         public float lookAheadFactor = 3;
         public float lookAheadReturnSpeed = 0.5f;
@@ -60,9 +61,12 @@ namespace UnityStandardAssets._2D
 
             m_LastTargetPosition = target.position;
         }
-        void FindPlayer(){
-            if (nextTimeToSearch <= Time.time){
-               GameObject searchResult = GameObject.FindGameObjectWithTag ("Player");
+
+        void FindPlayer()
+        {
+            if (nextTimeToSearch <= Time.time)
+            {
+                GameObject searchResult = GameObject.FindGameObjectWithTag("Player");
             if (searchResult != null)
             target = searchResult.transform;
                 nextTimeToSearch = Time.time + 0.5f;

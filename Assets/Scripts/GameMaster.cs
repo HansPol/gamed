@@ -6,8 +6,14 @@ public class GameMaster : MonoBehaviour {
     public static GameMaster gm;
      
     void Start (){
-        if (gm == null){
+        if (gm == null)
+        {
             gm = GameObject.FindGameObjectWithTag ("GM").GetComponent<GameMaster>();
+        }
+
+        if (GameObject.FindGameObjectWithTag("Player") == null)     // If there is no player on game start, load player and collectables
+        {
+            Instantiate(playerPrefab, spawnPoint.position, spawnPoint.rotation);
         }
     }
 
@@ -27,7 +33,7 @@ public class GameMaster : MonoBehaviour {
     public static void KillPlayer(Player player) {
         Destroy(player.gameObject);
 
-        GameObject[] coinsToDestoy = GameObject.FindGameObjectsWithTag("Coin");         //find all gameobject tagged coin and destroy and destroy them on player death
+        GameObject[] coinsToDestoy = GameObject.FindGameObjectsWithTag("Coin");         //find all gameobject tagged coin and destroy them on player death
         foreach (GameObject Coin in coinsToDestoy ) {
             Destroy(Coin);
         }

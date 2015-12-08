@@ -1,9 +1,10 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class ExplodingBlock : MonoBehaviour {
+public class ExplodingBlock : MonoBehaviour
+{
 
-    public int destroyDelay;
+    public float destroyDelay;
 
     IEnumerator OnCollisionEnter2D(Collision2D _colInfo)
     {
