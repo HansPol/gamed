@@ -28,6 +28,7 @@ public class Player : MonoBehaviour {
     void Start()
     {
         Spawning.Spawn(null);
+        explodingBlockSpawn.Spawn(null);
 
     }
 

@@ -1,19 +1,16 @@
 using UnityEngine;
 using System.Collections;
 
-public class GameMaster : MonoBehaviour {
+public class GameMaster : MonoBehaviour
+{
 
     public static GameMaster gm;
-     
-    void Start (){
+
+    void Start()
+    {
         if (gm == null)
         {
-            gm = GameObject.FindGameObjectWithTag ("GM").GetComponent<GameMaster>();
-        }
-
-        if (GameObject.FindGameObjectWithTag("Player") == null)     // If there is no player on game start, load player and collectables
-        {
-            Instantiate(playerPrefab, spawnPoint.position, spawnPoint.rotation);
+            gm = GameObject.FindGameObjectWithTag("GM").GetComponent<GameMaster>();
         }
     }
 
@@ -21,20 +18,22 @@ public class GameMaster : MonoBehaviour {
     public Transform spawnPoint;
     public float SpawnDelay = 2;
 
-          public IEnumerator RespawnPlayer ()
+    public IEnumerator RespawnPlayer()
     {
-        Debug.Log ("TODO: Spawn Sound");
+        Debug.Log("TODO: Spawn Sound");
         yield return new WaitForSeconds(SpawnDelay);
 
-        Instantiate (playerPrefab, spawnPoint.position, spawnPoint.rotation);
+        Instantiate(playerPrefab, spawnPoint.position, spawnPoint.rotation);
         Debug.Log("TODO: Add Spawn Particles");
     }
 
-    public static void KillPlayer(Player player) {
+    public static void KillPlayer(Player player)
+    {
         Destroy(player.gameObject);
 
         GameObject[] coinsToDestoy = GameObject.FindGameObjectsWithTag("Coin");         //find all gameobject tagged coin and destroy them on player death
-        foreach (GameObject Coin in coinsToDestoy ) {
+        foreach (GameObject Coin in coinsToDestoy)
+        {
             Destroy(Coin);
         }
 
