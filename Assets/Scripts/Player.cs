@@ -2,6 +2,7 @@
 using System.Collections;
 
 public class Player : MonoBehaviour {
+	public static Player Instance;
 
     [System.Serializable]
 	public class PlayerStats {
