@@ -2,7 +2,6 @@
 using System.Collections;
 
 public class Player : MonoBehaviour {
-	public static Player Instance;
 
     [System.Serializable]
 	public class PlayerStats {
@@ -15,6 +14,7 @@ public class Player : MonoBehaviour {
 	public PlayerStats playerStats = new PlayerStats();
 
     public int FallBoundary = -20;
+	public Transform destroyParticles;
 
     public void AddPoints(int value) {
         playerStats.Score += value;
@@ -32,6 +32,15 @@ public class Player : MonoBehaviour {
         explodingBlockSpawn.Spawn(null);
 
     }
+
+	void OnCollisionEnter2D (Collision2D Other)
+	{
+		if (Other.gameObject.tag == "Spikes")
+		{
+			Instantiate(destroyParticles, this.gameObject.transform.position, this.gameObject.transform.rotation);
+			DamagePlayer(999999);
+		}
+	}
 
     public void DamagePlayer (int damage){
 		playerStats.Health -= damage;
